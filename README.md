@@ -8,7 +8,7 @@ Filter, analyize and report on code faults with an easy to use REST API.
 
 **Getting Started**
 
-```
+```csharp
 //Easy to configure
 MyFaultConfig.CurrentDefaults.WithMsSqlData("Data Source=APPDB;Integrated Security=True;Database=MYFAULT");
             
