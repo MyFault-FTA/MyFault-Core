@@ -11,7 +11,5 @@ namespace MyFault.Data
         Guid GetFaultIdByHash(FaultHash fault);
         Guid CreateFault(FaultHash hash, Fault.Fault fault);
         void CreateFaultInstance(Guid faultId, FaultInstance instance);
-        
-    
     }
 }

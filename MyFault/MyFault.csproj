@@ -41,6 +41,7 @@
     <Compile Include="Configuration\MyFaultConfig.cs" />
     <Compile Include="Data\IFaultEntryDataProvider.cs" />
     <Compile Include="Data\IFaultQueryDataProvider.cs" />
+    <Compile Include="Data\Model\FaultInstanceSummary.cs" />
     <Compile Include="Data\Model\InstanceDataModel.cs" />
     <Compile Include="Data\Model\FaultModel.cs" />
     <Compile Include="Data\Model\FaultSummary.cs" />
