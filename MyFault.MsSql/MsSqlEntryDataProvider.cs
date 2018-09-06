@@ -37,15 +37,16 @@ namespace MyFault.MsSql
         {
             Guid newId = Guid.NewGuid();
             _connection.Execute(
-                "INSERT INTO Fault (FaultId, FaultHash, Message, Kind, Data) " +
-                "VALUES(@FaultId, @FaultHash, @Message, @Kind, @Data)",
+                "INSERT INTO Fault (FaultId, FaultHash, Message, Kind, Data, CreatedTime) " +
+                "VALUES(@FaultId, @FaultHash, @Message, @Kind, @Data, @CreatedTime)",
                 new
                 {
                     FaultId = newId,
                     FaultHash = hash.Data,
                     Message = fault.Message,
                     Kind = fault.GetFaultKind(),
-                    Data = string.Join(string.Empty, fault.ProvideHashData())
+                    Data = string.Join(string.Empty, fault.ProvideHashData()),
+                    CreatedTime = fault.CreatedTime
                 });
             return newId;
         }

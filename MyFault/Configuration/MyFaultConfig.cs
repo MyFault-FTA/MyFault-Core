@@ -9,38 +9,33 @@ namespace MyFault.Configuration
 {
     public partial class MyFaultConfig
     {
-        private IFaultEntryDataProvider _entryDataProvider;
-        private IFaultHasher _identififactionProvider = new DefaultHasher();
-        private List<IDataCollector> _dataCollectors = new List<IDataCollector>();
+        public IFaultHasher IdentififactionProvider { get; private set; } = new DefaultHasher();
+        public IFaultEntryDataProvider EntryDataProvider { get; private set; }
+        public List<IDataCollector> DataCollectors { get; } = new List<IDataCollector>();
+        public List<IBinaryDataCollector> BinaryDataCollectors { get; } = new List<IBinaryDataCollector>();
 
-        public IFaultEntryDataProvider EntryDataProvider
+        public MyFaultConfig WithDataProvider(IFaultEntryDataProvider entryDataProvider)
         {
-            get { return _entryDataProvider; }
+            EntryDataProvider = entryDataProvider;
+            return this;
         }
 
-        public IFaultHasher IdentififactionProvider
+        public MyFaultConfig WithIdentificationProvider(IFaultHasher hasher)
         {
-            get { return _identififactionProvider; }
+            IdentififactionProvider = IdentififactionProvider;
+            return this;
         }
 
-        public List<IDataCollector> DataCollectors
-        {
-            get { return _dataCollectors; }
-        }
-
-        public void WithDataProvider(IFaultEntryDataProvider entryDataProvider)
-        {
-            _entryDataProvider = entryDataProvider;
-        }
-
-        public void WithIdentificationProvider(IFaultHasher hasher)
-        {
-            _identififactionProvider = IdentififactionProvider;
-        }
-
-        public void WithDataCollector(IDataCollector collector)
+        public MyFaultConfig WithCollector(IDataCollector collector)
         {
             DataCollectors.Add(collector);
+            return this;
+        }
+        
+        public MyFaultConfig WithBinaryCollector(IBinaryDataCollector collector)
+        {
+            BinaryDataCollectors.Add(collector);
+            return this;
         }
     }
 

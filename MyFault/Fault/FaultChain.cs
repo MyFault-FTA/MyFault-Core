@@ -1,21 +1,30 @@
 ﻿using System;
 using System.IO;
 using System.Linq.Expressions;
-using System.Net;
 
-namespace MyFault
+namespace MyFault.Fault
 {
+    public interface IFaultChain
+    {
+        IFaultChain Fault(Fault fault);
+        IFaultChain Having(string key, string value);
+        IFaultChain Having<T>(Expression<Func<T>> memberExpression, int maxDepth = 2);
+        IFaultChain Having(string name, byte[] content, string contentType);
+        IFaultChain Having(string name, string filePath, string contentType);
+        void Handle();
+    }
+
     public class FaultChain : IFaultChain
     {
         private readonly MyFaultHandler _handler;
-        private  Fault.Fault _fault;
+        private Fault _fault;
 
         public FaultChain(MyFaultHandler handler)
         {
             _handler = handler;
         }
 
-        public IFaultChain Fault(Fault.Fault fault)
+        public IFaultChain Fault(Fault fault)
         {
             _fault = fault;
             return this;
@@ -38,17 +47,16 @@ namespace MyFault
             _fault.Instance.Having(name, content, contentType);
             return this;
         }
-        
+
         public IFaultChain Having(string name, string filePath, string contentType)
         {
             _fault.Instance.Having(name, File.ReadAllBytes(filePath), contentType);
             return this;
         }
 
-        public Fault.Fault Handle()
+        public void Handle()
         {
             _handler.Handle(_fault);
-            return _fault;
         }
     }
 }

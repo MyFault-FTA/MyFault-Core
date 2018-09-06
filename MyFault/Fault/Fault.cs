@@ -8,9 +8,7 @@ namespace MyFault.Fault
     {
         public string Message { get; }
         public FaultInstance Instance { get; }
-        private DateTime CreatedTime { get; }
-        
-        
+        public DateTime CreatedTime { get; }
 
         protected Fault(string message)
         {
@@ -23,7 +21,7 @@ namespace MyFault.Fault
 
         public string GetFaultKind()
         {
-            return this.GetType().FullName;
+            return GetType().FullName;
         }
     }
 }

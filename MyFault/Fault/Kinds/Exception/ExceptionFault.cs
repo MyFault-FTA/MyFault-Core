@@ -4,7 +4,7 @@ namespace MyFault.Fault.Kinds.Exception
 {
     public class ExceptionFault : Fault
     {
-        public System.Exception Exception { get; set; }
+        private System.Exception Exception { get; set; }
 
         public override IEnumerable<object> ProvideHashData()
         {

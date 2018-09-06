@@ -7,7 +7,9 @@ namespace MyFault.Viewer.AspNet.DataCollectors
 {
     public class HttpContextDataCollector : IDataCollector
     {
-        public List<InstanceData> CollectData()
+        public string DefineDataKeyPrefix() => "HttpContext";
+
+        public IEnumerable<InstanceData> CollectData()
         {
             List<InstanceData> newData = new List<InstanceData>();
             HttpContext context = HttpContext.Current;

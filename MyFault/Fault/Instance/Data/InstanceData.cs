@@ -2,7 +2,7 @@
 {
     public class InstanceData
     {
-        public string DataKey { get; }
+        public string DataKey { get; set; }
         public string DataValue { get; }
         public InstanceDataType DataType { get; }
 

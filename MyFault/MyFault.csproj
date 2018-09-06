@@ -51,9 +51,11 @@
     <Compile Include="Fault\Identification\FaultHash.cs" />
     <Compile Include="Fault\Identification\IFaultHasher.cs" />
     <Compile Include="Fault\Identification\Default\DefaultHasher.cs" />
-    <Compile Include="Fault\IFaultChain.cs" />
     <Compile Include="Fault\Instance\Data\Binary\BinaryInstanceData.cs" />
     <Compile Include="Fault\Instance\Data\Binary\BinaryInstanceDataCollection.cs" />
+    <Compile Include="Fault\Instance\Data\Collector\Defaults\BasicEnvironmentInfoCollector.cs" />
+    <Compile Include="Fault\Instance\Data\Collector\Defaults\WindowsVersionCollector.cs" />
+    <Compile Include="Fault\Instance\Data\Collector\IBinaryDataCollector.cs" />
     <Compile Include="Fault\Instance\Data\Collector\IDataCollector.cs" />
     <Compile Include="Fault\Instance\Data\InstanceDataType.cs" />
     <Compile Include="Fault\Instance\Data\InstanceData.cs" />
